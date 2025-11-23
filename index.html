@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Keira Chh 黃祺軒 | Portfolio </title>
+    <title>Keira Chh 黃祺軒 | Portfolio</title>
     <style>
-        /* --- 1. IG 風格基礎設定 --- */
+        /* --- 基礎設定 --- */
         :root {
             --bg-color: #fafafa;
             --card-bg: #ffffff;
@@ -17,292 +17,147 @@
             --border-color: #dbdbdb;
             --max-width: 935px;
         }
-        
         * { box-sizing: border-box; }
-        
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg-color);
-            color: var(--text-main);
+            margin: 0; padding: 0;
+            background-color: var(--bg-color); color: var(--text-main);
         }
-
         a { text-decoration: none; color: inherit; }
         ul { list-style: none; padding: 0; margin: 0; }
 
-        /* 版本號 (除錯用) */
+        /* 版本號 */
         .version-tag {
-            position: fixed;
-            top: 0; left: 0;
-            background: red; color: white;
-            padding: 2px 5px;
-            font-size: 10px;
-            z-index: 9999;
+            position: fixed; top: 0; left: 0;
+            background: #333; color: white;
+            padding: 4px 8px; font-size: 12px; font-weight: bold;
+            z-index: 9999; pointer-events: none;
         }
 
-        /* --- 2. 導覽列 --- */
+        /* --- 導覽列 --- */
         nav {
-            background: #fff;
-            border-bottom: 1px solid var(--border-color);
-            position: fixed;
-            top: 0; width: 100%;
-            z-index: 100;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            background: #fff; border-bottom: 1px solid var(--border-color);
+            position: fixed; top: 0; width: 100%; z-index: 100; height: 60px;
+            display: flex; align-items: center; justify-content: center;
         }
-        .nav-content {
-            width: 100%; max-width: var(--max-width);
-            padding: 0 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .logo { 
-            font-size: 1.5rem; 
-            font-weight: bold; 
-            font-family: 'Cookie', cursive, sans-serif; 
-        }
+        .nav-content { width: 100%; max-width: var(--max-width); padding: 0 20px; }
+        .logo { font-size: 1.5rem; font-weight: bold; font-family: 'Cookie', cursive, sans-serif; }
 
-        /* --- 3. 個人檔案區 --- */
+        /* --- 個人檔案 --- */
         .profile-header {
-            max-width: var(--max-width);
-            margin: 90px auto 30px;
-            padding: 0 20px;
-            display: flex;
-            align-items: flex-start;
+            max-width: var(--max-width); margin: 90px auto 30px; padding: 0 20px;
+            display: flex; align-items: flex-start;
         }
-        
-        .profile-pic-container { margin-right: 100px; flex-shrink: 0; }
+        .profile-pic-container { margin-right: 80px; flex-shrink: 0; }
         .profile-pic {
-            width: 150px; height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 1px solid var(--border-color);
-            padding: 2px;
+            width: 150px; height: 150px; border-radius: 50%;
+            object-fit: cover; border: 1px solid var(--border-color); padding: 2px;
         }
-
         .profile-info { flex-grow: 1; }
-        
         .profile-name-row { display: flex; align-items: center; margin-bottom: 20px; }
         .username { font-size: 1.8rem; font-weight: 300; margin-right: 20px; }
         
         .btn-msg {
-            background-color: var(--link-blue);
-            color: #fff;
-            padding: 5px 20px;
-            border-radius: 4px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            cursor: pointer;
-            border: none;
+            background-color: var(--link-blue); color: #fff;
+            padding: 5px 20px; border-radius: 4px; font-weight: 600; font-size: 0.9rem;
+            cursor: pointer; border: none;
         }
-        .btn-msg:hover { opacity: 0.9; }
-
         .stats-row { display: flex; margin-bottom: 20px; }
         .stats-row li { margin-right: 40px; font-size: 1rem; }
-        .stats-row strong { font-weight: 600; }
-
+        
         .bio h1 { font-size: 1rem; font-weight: 600; margin: 0; }
         .bio p { margin: 5px 0; font-size: 1rem; line-height: 1.5; white-space: pre-line; }
         
-        .profile-actions {
-            display: flex;
-            gap: 10px;
-            margin-top: 20px;
-            max-width: 400px;
-        }
+        .profile-actions { display: flex; gap: 10px; margin-top: 20px; max-width: 400px; }
         .action-btn {
-            flex: 1;
-            background-color: var(--btn-bg);
-            color: var(--text-main);
-            padding: 8px 16px;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            text-align: center;
-            transition: background 0.2s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            flex: 1; background-color: var(--btn-bg); color: var(--text-main);
+            padding: 8px 16px; border-radius: 8px; font-weight: 600; font-size: 0.9rem;
+            text-align: center; display: flex; align-items: center; justify-content: center;
         }
         .action-btn:hover { background-color: var(--btn-hover); }
 
-        /* --- 4. 標籤 --- */
+        /* --- 標籤 --- */
         .tabs {
-            max-width: var(--max-width);
-            margin: 0 auto;
-            border-top: 1px solid var(--border-color);
-            display: flex;
-            justify-content: center;
-            gap: 60px;
-            margin-top: 30px;
+            max-width: var(--max-width); margin: 0 auto; border-top: 1px solid var(--border-color);
+            display: flex; justify-content: center; gap: 60px; margin-top: 30px;
         }
         .tab-item {
-            padding: 20px 0;
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: #8e8e8e;
-            letter-spacing: 1px;
-            cursor: pointer;
-            border-top: 1px solid transparent;
-            display: flex; align-items: center; gap: 6px;
-            transition: color 0.2s;
+            padding: 20px 0; font-size: 0.8rem; font-weight: 600; color: #8e8e8e;
+            letter-spacing: 1px; cursor: pointer; border-top: 1px solid transparent;
+            display: flex; align-items: center; gap: 6px; transition: color 0.2s;
         }
-        .tab-item.active {
-            color: #262626;
-            border-top: 1px solid #262626;
-            margin-top: -1px;
-        }
-        .tab-item:hover { color: #555; }
+        .tab-item.active { color: #262626; border-top: 1px solid #262626; margin-top: -1px; }
 
-        /* --- 5. 九宮格 --- */
+        /* --- 九宮格 --- */
         .gallery-container {
-            max-width: var(--max-width);
-            margin: 0 auto 50px;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 28px;
+            max-width: var(--max-width); margin: 0 auto 50px;
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px;
             min-height: 300px;
         }
-        
         .gallery-item {
-            position: relative;
-            cursor: pointer;
-            aspect-ratio: 1 / 1;
-            background: #efefef;
-            overflow: hidden;
-            animation: fadeIn 0.5s ease;
+            position: relative; cursor: pointer; aspect-ratio: 1 / 1;
+            background: #efefef; overflow: hidden;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+        .gallery-item img, .gallery-item video {
+            width: 100%; height: 100%; object-fit: cover; transition: 0.3s;
         }
-
-        .gallery-item img {
-            width: 100%; height: 100%;
-            object-fit: cover;
-            transition: 0.3s;
-        }
-        
         .video-icon {
             position: absolute; top: 10px; right: 10px;
-            color: #fff; text-shadow: 0 0 5px rgba(0,0,0,0.5);
-            display: none;
+            color: #fff; text-shadow: 0 0 5px rgba(0,0,0,0.5); pointer-events: none;
         }
-        
         .gallery-overlay {
             position: absolute; top:0; left:0; width:100%; height:100%;
-            background: rgba(0,0,0,0.3);
+            background: rgba(0,0,0,0.3); opacity: 0; transition: 0.2s;
             display: flex; justify-content: center; align-items: center;
-            opacity: 0; transition: 0.2s;
-            color: #fff; font-weight: bold;
+            color: #fff; font-weight: bold; font-size: 1.2rem; pointer-events: none;
         }
         .gallery-item:hover .gallery-overlay { opacity: 1; }
-        
-        .empty-state {
-            grid-column: 1 / -1;
-            text-align: center;
-            padding: 50px;
-            color: #999;
-        }
 
-        /* --- 6. 燈箱 --- */
+        /* --- 燈箱 --- */
         .modal {
-            display: none;
-            position: fixed; z-index: 1000;
+            display: none; position: fixed; z-index: 1000;
             left: 0; top: 0; width: 100%; height: 100%;
-            background-color: rgba(0,0,0,0.6);
+            background-color: rgba(0,0,0,0.8); backdrop-filter: blur(5px);
             justify-content: center; align-items: center;
-            backdrop-filter: blur(5px);
         }
-        
         .modal-content {
-            background-color: #fff;
-            width: 90%; max-width: 1100px;
-            height: 85vh;
-            display: flex;
-            border-radius: 4px;
-            overflow: hidden;
+            background-color: #fff; width: 90%; max-width: 1100px; height: 85vh;
+            display: flex; border-radius: 4px; overflow: hidden;
         }
-
         .modal-media {
-            flex: 1.5;
-            background: #000;
-            display: flex; align-items: center; justify-content: center;
-            overflow: hidden;
+            flex: 1.5; background: #000; display: flex; align-items: center; justify-content: center;
         }
-        .modal-media img { width: 100%; height: 100%; object-fit: contain; display: block; }
+        .modal-media img { width: 100%; height: 100%; object-fit: contain; }
         .modal-media video { width: 100%; height: 100%; max-height: 80vh; outline: none; }
-        .modal-media iframe { width: 100%; height: 100%; border: none; }
-
-        .modal-info {
-            flex: 1;
-            display: flex; flex-direction: column;
-            border-left: 1px solid var(--border-color);
-            background: #fff;
-        }
         
-        .modal-header {
-            padding: 15px;
-            border-bottom: 1px solid var(--border-color);
-            display: flex; align-items: center; justify-content: space-between;
+        .modal-info {
+            flex: 1; display: flex; flex-direction: column; background: #fff; border-left: 1px solid #efefef;
         }
-        .modal-user { display: flex; align-items: center; font-weight: 600; }
+        .modal-header { padding: 15px; border-bottom: 1px solid #efefef; display: flex; align-items: center; }
         .modal-user img { width: 32px; height: 32px; border-radius: 50%; margin-right: 10px; }
         
         .modal-body { padding: 15px; overflow-y: auto; flex-grow: 1; }
-        .caption-text { white-space: pre-wrap; line-height: 1.6; font-size: 0.95rem; }
+        /* 這裡加了 word-wrap 以防文字太長撐爆 */
+        .caption-text { white-space: pre-wrap; line-height: 1.6; font-size: 0.95rem; word-wrap: break-word; }
         
-        .modal-footer {
-            padding: 15px;
-            border-top: 1px solid var(--border-color);
-            color: #8e8e8e; font-size: 0.8rem;
-        }
-
         .close-btn {
-            position: absolute; top: 20px; right: 30px;
-            color: #fff; font-size: 40px; cursor: pointer;
+            position: absolute; top: 20px; right: 30px; color: #fff; font-size: 40px; cursor: pointer;
         }
 
-        /* --- 手機版 RWD --- */
+        /* RWD */
         @media (max-width: 768px) {
-            .nav-content { padding: 0 15px; }
-            .profile-header { flex-direction: column; margin-top: 70px; margin-bottom: 20px; padding: 0 15px; }
-            .profile-pic-container { margin-right: 0; margin-bottom: 20px; display: flex; align-items: center; }
-            .profile-pic { width: 80px; height: 80px; margin-right: 20px; }
-            .profile-name-row { flex-direction: column; align-items: flex-start; }
-            .username { margin-bottom: 5px; }
-            .btn-msg { width: 100%; text-align: center; margin-bottom: 15px; padding: 6px 0;}
-            .stats-row { width: 100%; justify-content: space-around; border-top: 1px solid var(--border-color); padding: 15px 0; margin: 0 0 15px 0; }
-            .stats-row li { margin: 0; text-align: center; display: flex; flex-direction: column; }
-            .profile-actions { width: 100%; max-width: none; }
-            .gallery-container { gap: 3px; }
-            
-            .modal-content {
-                flex-direction: column;
-                width: 100%; height: 100%;
-                max-width: none; border-radius: 0;
-            }
-            .modal-media {
-                flex: none; 
-                width: 100%;
-                height: auto;
-                min-height: 40vh;
-                max-height: 70vh;
-                background: #000;
-                overflow-y: auto;
-            }
-            .modal-media img { height: auto; width: 100%; object-fit: unset; }
-            .modal-info { flex: 1; overflow-y: auto; }
-            .close-btn { color: #000; top: 10px; right: 15px; z-index: 1001; background: rgba(255,255,255,0.8); border-radius: 50%; width: 30px; height: 30px; text-align: center; line-height: 30px; font-size: 24px;}
+            .profile-header { flex-direction: column; }
+            .profile-pic-container { margin-right: 0; margin-bottom: 20px; }
+            .profile-pic { width: 80px; height: 80px; }
+            .modal-content { flex-direction: column; width: 100%; height: 100%; border-radius: 0; }
+            .modal-media { flex: none; height: 50vh; }
+            .close-btn { top: 10px; right: 10px; }
         }
     </style>
 </head>
 <body>
-    <div class="version-tag">Ver 3.0 (Clean)</div>
+    <!-- 版本號：看到 Final Fix 就對了 -->
+    <div class="version-tag">Final Fix v6.0</div>
 
     <nav>
         <div class="nav-content">
@@ -312,20 +167,18 @@
 
     <header class="profile-header">
         <div class="profile-pic-container">
-            <img src="img/me.jpg" alt="Keira" class="profile-pic" onerror="this.src='me.jpg'">
+            <img src="img/me.jpg" alt="Keira" class="profile-pic" onerror="this.src='https://via.placeholder.com/150?text=No+Img'">
         </div>
         <div class="profile-info">
             <div class="profile-name-row">
                 <div class="username">HUANG CHI HSUAN</div>
                 <a href="mailto:chance5690@gmail.com" class="btn-msg">Message</a>
             </div>
-            
             <ul class="stats-row">
-                <li><strong>INTJ</strong> <span>type</span></li>
-                <li><strong>8ys</strong> <span>in AD</span></li>
-                <li><strong>TW</strong> <span>based</span></li>
+                <li><strong>INTJ</strong> type</li>
+                <li><strong>8ys</strong> in AD</li>
+                <li><strong>TW</strong> based</li>
             </ul>
-
             <div class="bio">
                 <h1>黃祺軒 Keira KK | Art Director</h1>
                 <p>
@@ -340,17 +193,13 @@
                     ⭐️Being Digital--2022-2024/Art Director
                     ⭐️Group Tron--2018-2019/Associate Art Director
                     ⭐️Bremen Creative--2017-2018/Visual Designer
-                    ⭐️BPets Food Startup Owner--2020-2024
-                
-                    #samsung #Mitsubishi Motor #中華電信 #Haleon #Pfifzer #RMHC #台灣高鐵 #蘇格登威士忌 #媚點 #Foodpanda #安麗 #Shiseido
+                    ⭐️Pets Food Startup Owner--2020-2024
                 </p>
             </div>
-
             <div class="profile-actions">
                 <a href="img/KeiraChiHsuan_Huang_CV.pdf" class="action-btn" download>Download CV</a>
                 <a href="https://www.linkedin.com/in/keira-huang-220a32152" class="action-btn" target="_blank">LinkedIn</a>
             </div>
-
         </div>
     </header>
 
@@ -367,6 +216,7 @@
 
     <div class="gallery-container" id="gallery"></div>
 
+    <!-- 燈箱 -->
     <div class="modal" id="modal" onclick="closeModal(event)">
         <div class="close-btn" onclick="closeModalDirect()">&times;</div>
         <div class="modal-content" onclick="event.stopPropagation()">
@@ -374,17 +224,12 @@
             <div class="modal-info">
                 <div class="modal-header">
                     <div class="modal-user">
-                        <img src="img/me.jpg" alt="user" onerror="this.src='me.jpg'">
-                        <span>keira.chh_design</span>
+                        <img src="img/me.jpg" alt="user" onerror="this.src='https://via.placeholder.com/32'">
+                        <span style="margin-left:10px; font-weight:bold;">keira.chh_design</span>
                     </div>
-                    <span>•••</span>
                 </div>
                 <div class="modal-body">
                     <div class="caption-text" id="modal-caption"></div>
-                </div>
-                <div class="modal-footer">
-                    <div style="font-size: 1.2rem; margin-bottom: 10px;">♡ &nbsp; 💬 &nbsp; ➢</div>
-                    <span style="font-size: 0.7rem; text-transform: uppercase; color: #aaa;">View all comments</span>
                 </div>
             </div>
         </div>
@@ -392,72 +237,30 @@
 
     <script>
         // ==========================================
-        // 1. 數量設定區
+        // 1. 檔案數量設定
         // ==========================================
+        const imageCount = 49; // p1.jpg ~ p49.jpg
+        const videoCount = 21; // v1.mp4 ~ v21.mp4
 
-        const imageCount = 49; // 圖片產生 p1 ~ p49
-        const videoCount = 21; // 影片產生 v1 ~ v21
-
         // ==========================================
-        // 2. 文字客製化區
+        // 2. 文字客製化
+        // 注意：所有的單引號 ' 都必須要小心，我已經幫你用 \ 跳脫處理了
         // ==========================================
-        
-        // 圖片專用 (p 開頭)
         const customImages = {
-            1: { caption: '【Campaign Key Visual】\n\nInsight\nEvery car owner has a passionate soul, even if the car is mainly targeted at female drivers. As one of the most affordable products in the small car market, Mitsubishi Motors wanted to make a stronger impact on customers, so they introduced 16 new colors to boost the appeal of Colt Plus.\n\nChallenge\nBecause of budget limitations, each new color only had one product photo from a single angle. The only way to create fresh visuals was to “draw” the car ourselves.\n\nIdea\nWe created a new style we had never tried before — a cyberpunk look with neon lights. Inspired by racing movies and sports car aesthetics, bold, futuristic, and playful. The cyberpunk aesthetic with glowing neon accents brought a fresh perspective to the Colt Plus, turning limited resources into a visually striking campaign. We transformed the way the small car was presented, showing that you can be cool even when driving a compact car.' },
-            2: { caption: '【Social Media Content】\n\nInsight\nWhy do you need a car? In Taiwan, April to May is the rainy season, and typhoons are also frequent.\n\nChallenge\nSmall cars have become a popular choice as people’s first car. Both price and functions drive the purchase decision. That’s why we needed to keep creating new imagery to attract potential customers.\n\nIDEA\nDriving Colt Plus in the rain is like carrying an umbrella in a storm — it gives you comfort and protection whenever the weather turns harsh. Inspired by this metaphor, we visualized the car under a giant transparent umbrella, turning a simple feature into a symbolic image of safety. The design used clean, refreshing blue tones and a poetic visual language, blending practicality with emotion.' },
-            3: { caption: '【Campaign Key Visual】\n\nInsight\nIn the past five years, ESG has become a global trend. To align with this movement and contribute to a better world, Chunghwa Telecom — as the largest telecom company in Taiwan — was given the mission to become a model of ESG by the government.\n\nChallenge\nMost people don’t understand the link between network speed and ESG. In addition, ESG is often perceived as a corporate responsibility, not something that relates to individuals.\n\nIdea\nWe conveyed the message that it’s not just about network speed, but about the path we walk together. A real human figure was used to represent our client, running forward on a path made of technology. The design combined speed with purpose, creating a futuristic yet human-centered style that symbolized progress toward a better world.' },
-            4: { caption: '【Social Media Content】\n社群行銷素材。\n\n#SocialMedia' },
-            5: { caption: '【Social Media Content】\n社群行銷素材。\n\n#SocialMedia' },
-            6: { caption: '【Social Media Content】\n社群行銷素材。\n\n#SocialMedia' },
-            7: { caption: '【Campaign Key Visual】\n\nInsight\nThe ESG program is not just a slogan. Over the years, Taiwan’s largest telecom company has made significant progress in ESG areas, including wildlife conservation, water resources, and environmental protection.\n\nChallenge\nMost people only recognize Chunghwa Telecom as a telecom company, but we are more than that.\n\nIdea\nInstead of using a pure “technology style,” we chose to express ESG through vibrant imagery of life. The central sprout symbolizes growth, while featuring endangered animals and visual elements representing ESG efforts. The design conveys energy, continuity, and the idea that our commitment to sustainability keeps growing stronger.' },
-            8: { caption: '【Campaign Video】米其林輪胎\n\nInsight\nMarried men — Michelin’s main target audience — whether young or older, work hard every day to provide for their families. The only moment they truly feel in control of their own lives is when they grip the steering wheel.\n\nChallenge\nMale audiences show relatively low engagement on digital platforms. While the insight was emotionally powerful, the challenge was how to transform it into real purchasing power. We needed a strong connection that could resonate with both younger and older male drivers.\n\nIdea\nAt that time, hip-hop talent shows were at the peak of popularity. We not only seized this trend but also used hip-hop as a bridge to connect two generations. The lyrics were carefully crafted, asking the songwriter to focus on men’s inner passion for driving — and we even drafted our own version of the lyrics to convey the story we wanted to tell. Structured with a beginning, rise, twist, and resolution, the lyrics combined the struggles of daily life with the thrill of driving, giving voice to what every man feels inside.' },
-            9: { caption: '【Social Campaign】\n\nInsight\nMany people choose to join food delivery as riders. In Taiwan, this role is considered contract-based, which means they don’t receive the same benefits as full-time employees. To attract more riders, foodpanda introduced a program called “360 Degrees for Your Safety” to ensure every rider can work safely and feel protected. However, statistics showed that very few people were actually aware of this program.\n\nChallenge\nDue to cultural and educational biases, many people stereotype riders as coming from the “lower levels” of society — which is a form of discrimination. As an employer, foodpanda wanted to raise awareness about equality and human rights. At the same time, it was important that riders themselves felt truly cared for.\n\nIdea\nA three-step campaign was created:\n1. Social Media – to connect with the public and build awareness.\n2. Interactive Mobile Game – to help riders learn about the “360 Degrees” safety program in a fun, engaging way.\n3. Online Video (OTV) – to showcase the positive outcomes of becoming a rider under this initiative. We highlighted the many different roles riders can play in their daily lives, breaking stereotypes and encouraging more people to embrace a multi-career lifestyle by becoming a rider.' },
-            10: { caption: '【Social Media Content】\n社群行銷素材。\n\n#SocialMedia' },
-            11: { caption: '【Social Media Content】\n社群行銷素材。\n\n#SocialMedia' },
-            12: { caption: '【Social Media Content】\n社群行銷素材。\n\n#SocialMedia' },
-            13: { caption: '【Crowdfunding Project】\n把在工作上所學到的前端資料搜集、使用者分析、策略擬定、介面設計、KOL運用、募資頁面製作\n一手包辦！\n\nInsight\nWhen you are walking on the street and see a stray animal injured, lying in the corner and waiting for its time to end, what would you do? Most people would choose to ignore it and convince themselves it’s already dead. Only a few, who have experience, know how to deal with it and where to take it for help.\n\nChallenge\nPeople with rescue skills often can only post on Facebook and ask for donations to cover medical bills. Including the adoption process after recovery, the whole journey costs both time and money. This makes many people unwilling to be rescuers again. Not only rescuers, but ordinary people like you and me also hesitate to help, because we worry about medical costs and the time needed to take care of the animal.\n\nIdea\nAn app can bring the whole process together: reporting to animal hospitals, making donations (paid directly to the hospital), and helping the animal find a home after recovery. Everyone can clearly see each expense and donation on the case page. If you are a rescuer, you will be notified whenever a new case is reported in your area (based on the distance you set). I want to use this animal rescue app to race against death.' },
-            14: { caption: '【Notebook Design】\n\nInsight\nRonald McDonald House Charities (RMHC) is a global non-profit organization whose mission is to provide sick children with a “home away from home.” Each year, to support its ongoing services, RMHC releases a calendar notebook that is given as a gift to donors who contribute a set amount.\n\nIDEA\nWe designed the elements with hand-drawn illustrations, adding new themes each year to create a consistent series look that encourages people to collect them and helps increase donations. For the inside pages, we included drawings from the children, using their love to bring warmth to every supporter.
-' },
-            15: { caption: '【OOH Design】\n\nInsight\nChunghwa Telecom is the largest telecom company in Taiwan, and the launch of new smartphones each year is always a key moment for marketing. For this campaign, we combined the hype of Blackpink’s concert with the upgraded camera features of the Google Pixel 10. After analyzing the fan journey, we found that most concertgoers would take the high-speed rail and transfer to the MRT to reach the venue. Based on this insight, we decided to place a large interactive ad inside the transfer MRT station.\n\nChallenge\nAlthough it was a large-scale ad, the placement lasted only two days during the concert period, which made it challenging to convince Chunghwa Telecom to invest. Fortunately, Google’s official team loved the idea, which indirectly helped bring the project to life.\n\nIDEA\nA unique feature of the Kaohsiung MRT is the green strip on each train car, which looks just like an upload progress bar. Since Chunghwa Telecom is known as the speed champion, we turned this into a creative execution. On the ad board, we cut out a hollow strip. When the train arrived at the station, the green strip on the cars perfectly filled the hollow space, instantly creating the effect of a progress bar being completed — highlighting both the network speed and the new smartphone launch. \n\n\n#blackpinkconcert' },
-            16: { caption: '【Social Media Content】\n社群行銷素材。\n\n#SocialMedia' },
-            17: { caption: '【Social Media Content】\n社群行銷素材。\n\n#SocialMedia' },
-            18: { caption: '【Social Media Content】\n社群行銷素材。\n\n#SocialMedia' },
-            19: { caption: '【Campaign Key Visual】' },
-            20: { caption: '【Campaign Key Visual】' },
-            21: { caption: '【Campaign Key Visual】' },
-            22: { caption: '【Campaign Key Visual】' },
-            23: { caption: '【Campaign Key Visual】' },
-            24: { caption: '【Campaign Key Visual】' },
-            25: { caption: '【Social Media Content】\n社群行銷素材。\n\n#SocialMedia' },
-            26: { caption: '【Social Media Content】\n社群行銷素材。\n\n#SocialMedia' },
-            27: { caption: '【Social Media Content】\n社群行銷素材。\n\n#SocialMedia' },
-            28: { caption: '【Social Media Content】\n社群行銷素材。\n\n#SocialMedia' },
-            29: { caption: '【Social Media Content】\n社群行銷素材。\n\n#SocialMedia' },
-            30: { caption: '【Social Media Content】\n社群行銷素材。\n\n#SocialMedia' },
-            31: { caption: '【Social Media Content】\n社群行銷素材。\n\n#SocialMedia' },
-            32: { caption: '【Social Media Content】\n社群行銷素材。\n\n#SocialMedia' },
-            33: { caption: '【Social Media Content】\n社群行銷素材。\n\n#SocialMedia' },
-            34: { caption: '【Product Photography】' },
-            35: { caption: '【Product Photography】' },
-            36: { caption: '【Product Photography】' },
-            37: { caption: '【Product Photography】' },
-            38: { caption: '【Product Photography】' },
-            39: { caption: '【Product Photography】' },
-            40: { caption: '【Product Photography】' },
-            41: { caption: '【Product Photography】' },
-            42: { caption: '【Product Photography】' },
-            43: { caption: '【Product Photography】' },
-            44: { caption: '【Product Photography】' },
-            45: { caption: '【Video Style Design】' },
-            46: { caption: '【Video Style Design】' },
-            47: { caption: '【LINE MGM Deisign】' },
+            1: { caption: `【Campaign Key Visual】\n\nInsight\nEvery car owner has a passionate soul, even if the car is mainly targeted at female drivers. As one of the most affordable products in the small car market, Mitsubishi Motors wanted to make a stronger impact on customers, so they introduced 16 new colors to boost the appeal of Colt Plus.\n\nChallenge\nBecause of budget limitations, each new color only had one product photo from a single angle. The only way to create fresh visuals was to “draw” the car ourselves.\n\nIdea\nWe created a new style we had never tried before — a cyberpunk look with neon lights. Inspired by racing movies and sports car aesthetics, bold, futuristic, and playful. The cyberpunk aesthetic with glowing neon accents brought a fresh perspective to the Colt Plus, turning limited resources into a visually striking campaign. We transformed the way the small car was presented, showing that you can be cool even when driving a compact car.` },
+            2: { caption: `【Social Media Content】\n\nInsight\nWhy do you need a car? In Taiwan, April to May is the rainy season, and typhoons are also frequent.\n\nChallenge\nSmall cars have become a popular choice as people’s first car. Both price and functions drive the purchase decision. That’s why we needed to keep creating new imagery to attract potential customers.\n\nIDEA\nDriving Colt Plus in the rain is like carrying an umbrella in a storm — it gives you comfort and protection whenever the weather turns harsh. Inspired by this metaphor, we visualized the car under a giant transparent umbrella, turning a simple feature into a symbolic image of safety. The design used clean, refreshing blue tones and a poetic visual language, blending practicality with emotion.` },
+            3: { caption: `【Campaign Key Visual】\n\nInsight\nIn the past five years, ESG has become a global trend. To align with this movement and contribute to a better world, Chunghwa Telecom — as the largest telecom company in Taiwan — was given the mission to become a model of ESG by the government.\n\nChallenge\nMost people don’t understand the link between network speed and ESG. In addition, ESG is often perceived as a corporate responsibility, not something that relates to individuals.\n\nIdea\nWe conveyed the message that it’s not just about network speed, but about the path we walk together. A real human figure was used to represent our client, running forward on a path made of technology. The design combined speed with purpose, creating a futuristic yet human-centered style that symbolized progress toward a better world.` },
+            7: { caption: `【Campaign Key Visual】\n\nInsight\nThe ESG program is not just a slogan. Over the years, Taiwan’s largest telecom company has made significant progress in ESG areas, including wildlife conservation, water resources, and environmental protection.\n\nChallenge\nMost people only recognize Chunghwa Telecom as a telecom company, but we are more than that.\n\nIdea\nInstead of using a pure “technology style,” we chose to express ESG through vibrant imagery of life. The central sprout symbolizes growth, while featuring endangered animals and visual elements representing ESG efforts. The design conveys energy, continuity, and the idea that our commitment to sustainability keeps growing stronger.` },
+            8: { caption: `【Campaign Video】米其林輪胎\n\nInsight\nMarried men — Michelin’s main target audience — whether young or older, work hard every day to provide for their families. The only moment they truly feel in control of their own lives is when they grip the steering wheel.\n\nChallenge\nMale audiences show relatively low engagement on digital platforms. While the insight was emotionally powerful, the challenge was how to transform it into real purchasing power. We needed a strong connection that could resonate with both younger and older male drivers.\n\nIdea\nAt that time, hip-hop talent shows were at the peak of popularity. We not only seized this trend but also used hip-hop as a bridge to connect two generations. The lyrics were carefully crafted, asking the songwriter to focus on men’s inner passion for driving — and we even drafted our own version of the lyrics to convey the story we wanted to tell. Structured with a beginning, rise, twist, and resolution, the lyrics combined the struggles of daily life with the thrill of driving, giving voice to what every man feels inside.` },
+            9: { caption: `【Social Campaign】\n\nInsight\nMany people choose to join food delivery as riders. In Taiwan, this role is considered contract-based, which means they don’t receive the same benefits as full-time employees. To attract more riders, foodpanda introduced a program called “360 Degrees for Your Safety” to ensure every rider can work safely and feel protected. However, statistics showed that very few people were actually aware of this program.\n\nChallenge\nDue to cultural and educational biases, many people stereotype riders as coming from the “lower levels” of society — which is a form of discrimination. As an employer, foodpanda wanted to raise awareness about equality and human rights. At the same time, it was important that riders themselves felt truly cared for.\n\nIdea\nA three-step campaign was created:\n1. Social Media – to connect with the public and build awareness.\n2. Interactive Mobile Game – to help riders learn about the “360 Degrees” safety program in a fun, engaging way.\n3. Online Video (OTV) – to showcase the positive outcomes of becoming a rider under this initiative. We highlighted the many different roles riders can play in their daily lives, breaking stereotypes and encouraging more people to embrace a multi-career lifestyle by becoming a rider.` },
+            13: { caption: `【Crowdfunding Project】\n把在工作上所學到的前端資料搜集、使用者分析、策略擬定、介面設計、KOL運用、募資頁面製作\n一手包辦！\n\nInsight\nWhen you are walking on the street and see a stray animal injured, lying in the corner and waiting for its time to end, what would you do? Most people would choose to ignore it and convince themselves it’s already dead. Only a few, who have experience, know how to deal with it and where to take it for help.\n\nChallenge\nPeople with rescue skills often can only post on Facebook and ask for donations to cover medical bills. Including the adoption process after recovery, the whole journey costs both time and money. This makes many people unwilling to be rescuers again. Not only rescuers, but ordinary people like you and me also hesitate to help, because we worry about medical costs and the time needed to take care of the animal.\n\nIdea\nAn app can bring the whole process together: reporting to animal hospitals, making donations (paid directly to the hospital), and helping the animal find a home after recovery. Everyone can clearly see each expense and donation on the case page. If you are a rescuer, you will be notified whenever a new case is reported in your area (based on the distance you set). I want to use this animal rescue app to race against death.` },
+            14: { caption: `【Notebook Design】\n\nInsight\nRonald McDonald House Charities (RMHC) is a global non-profit organization whose mission is to provide sick children with a “home away from home.” Each year, to support its ongoing services, RMHC releases a calendar notebook that is given as a gift to donors who contribute a set amount.\n\nIDEA\nWe designed the elements with hand-drawn illustrations, adding new themes each year to create a consistent series look that encourages people to collect them and helps increase donations. For the inside pages, we included drawings from the children, using their love to bring warmth to every supporter.` },
+            15: { caption: `【OOH Design】\n\nInsight\nChunghwa Telecom is the largest telecom company in Taiwan, and the launch of new smartphones each year is always a key moment for marketing. For this campaign, we combined the hype of Blackpink’s concert with the upgraded camera features of the Google Pixel 10. After analyzing the fan journey, we found that most concertgoers would take the high-speed rail and transfer to the MRT to reach the venue. Based on this insight, we decided to place a large interactive ad inside the transfer MRT station.\n\nChallenge\nAlthough it was a large-scale ad, the placement lasted only two days during the concert period, which made it challenging to convince Chunghwa Telecom to invest. Fortunately, Google’s official team loved the idea, which indirectly helped bring the project to life.\n\nIDEA\nA unique feature of the Kaohsiung MRT is the green strip on each train car, which looks just like an upload progress bar. Since Chunghwa Telecom is known as the speed champion, we turned this into a creative execution. On the ad board, we cut out a hollow strip. When the train arrived at the station, the green strip on the cars perfectly filled the hollow space, instantly creating the effect of a progress bar being completed — highlighting both the network speed and the new smartphone launch. \n\n\n#blackpinkconcert` },
+            47: { caption: '【LINE MGM Design】' },
             48: { caption: '【Campaign Eventsite Design】' },
             49: { caption: '【Paint by me】' }
-
         };
 
-        // 影片專用 (v 開頭)
         const customVideos = {
             1: { caption: '【Campaign Commercial】' },
             2: { caption: '【Campaign Commercial】' },
@@ -479,48 +282,43 @@
             18: { caption: '【Motion Graphic Content】' },
             19: { caption: '【Motion Graphic Content】' },          
             20: { caption: '【Social Campaign Content】' },
-            21: { caption: '【Social Campaign Content】' }           
+            21: { caption: '【Social Campaign Content】' } 
         };
 
         // ==========================================
-        // 3. 自動生成區 (嚴格分流)
+        // 3. 自動生成邏輯
         // ==========================================
-        
         const allPosts = [];
 
-        // 軌道 A：只處理圖片 (p系列)
+        // --- 圖片軌道 (Visual) ---
         for (let i = 1; i <= imageCount; i++) {
             const custom = customImages[i] || {}; 
             allPosts.push({
-                id: `img-${i}`,
                 type: 'image',
                 src: `img/p${i}.jpg`,
                 thumb: `img/p${i}.jpg`,
-                caption: custom.caption || `Visual Work No.${i}\n#GraphicDesign`
+                caption: custom.caption || `Visual Work No.${i}`
             });
         }
 
-        // 軌道 B：只處理影片 (v系列)
+        // --- 影片軌道 (Video) ---
         for (let i = 1; i <= videoCount; i++) {
             const custom = customVideos[i] || {};
             allPosts.push({
-                id: `video-${i}`,
                 type: 'video',
-                src: `img/v${i}.mp4`,  
-                thumb: `img/v${i}.jpg`, // 影片封面
-                caption: custom.caption || `Video Work No.${i}\n#MotionGraphics`
+                src: `img/v${i}.mp4`,
+                thumb: `img/v${i}.mp4`,
+                caption: custom.caption || `Video Work No.${i}`
             });
         }
 
         // ==========================================
-        // 4. 核心功能區
+        // 4. 渲染與互動
         // ==========================================
-        
         const gallery = document.getElementById('gallery');
         const modal = document.getElementById('modal');
         const modalMedia = document.getElementById('modal-media');
         const modalCaption = document.getElementById('modal-caption');
-        
         let currentDisplayPosts = [];
 
         switchTab('visual');
@@ -530,37 +328,38 @@
             document.getElementById('tab-video').classList.remove('active');
             document.getElementById(`tab-${tabName}`).classList.add('active');
 
-            // 嚴格篩選
             if (tabName === 'visual') {
-                currentDisplayPosts = allPosts.filter(post => post.type === 'image');
+                currentDisplayPosts = allPosts.filter(p => p.type === 'image');
             } else {
-                currentDisplayPosts = allPosts.filter(post => post.type === 'video');
+                currentDisplayPosts = allPosts.filter(p => p.type === 'video');
             }
-
             renderGallery(currentDisplayPosts);
         }
 
         function renderGallery(posts) {
             gallery.innerHTML = '';
-            
             if (posts.length === 0) {
-                gallery.innerHTML = '<div class="empty-state">尚無內容</div>';
+                gallery.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:50px; color:#999;">尚無內容</div>';
                 return;
             }
 
             posts.forEach((post, index) => {
                 const item = document.createElement('div');
                 item.className = 'gallery-item';
-                
-                // 顯示縮圖 (onerror: 找不到封面圖就用大頭照)
-                let htmlContent = `<img src="${post.thumb}" loading="lazy" alt="post" onerror="this.src='img/me.jpg'">`;
-                
-                if(post.type === 'video') {
-                    htmlContent += `<div class="video-icon" style="display:block; position:absolute; top:10px; right:10px;"><svg width="24" height="24" viewBox="0 0 24 24" fill="#ffffff"><path d="M8 5v14l11-7z"/></svg></div>`;
+                let htmlContent = '';
+
+                if (post.type === 'video') {
+                    htmlContent = `
+                        <video src="${post.src}#t=0.1" muted playsinline loop
+                               onmouseover="this.play()" onmouseout="this.pause()">
+                        </video>
+                        <div class="video-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="#ffffff"><path d="M8 5v14l11-7z"/></svg></div>
+                    `;
+                } else {
+                    htmlContent = `<img src="${post.thumb}" loading="lazy" onerror="this.style.display='none';this.parentNode.style.backgroundColor='#eee';">`;
                 }
-                
-                htmlContent += `<div class="gallery-overlay">♥ ${(Math.random() * 900 + 100).toFixed(0)}</div>`;
-                
+
+                htmlContent += `<div class="gallery-overlay">View</div>`;
                 item.innerHTML = htmlContent;
                 item.onclick = () => openModal(index);
                 gallery.appendChild(item);
@@ -572,23 +371,21 @@
             modal.style.display = 'flex';
             document.body.style.overflow = 'hidden';
 
-            // 這裡已強制使用 <video> 標籤
             if (post.type === 'video') {
                 modalMedia.innerHTML = `
-                    <video controls autoplay playsinline style="width:100%; height:100%; max-height:80vh; outline:none;">
+                    <video controls autoplay playsinline style="width:100%; height:100%; max-height:80vh;">
                         <source src="${post.src}" type="video/mp4">
-                        您的瀏覽器不支援影片播放。
+                        您的瀏覽器不支援播放此影片。
                     </video>`;
             } else {
-                modalMedia.innerHTML = `<img src="${post.src}" alt="Detail">`;
+                modalMedia.innerHTML = `<img src="${post.src}">`;
             }
-            modalCaption.innerHTML = post.caption.replace(/\n/g, '<br>');
+            modalCaption.innerText = post.caption;
         }
 
         function closeModal(event) {
             if (event.target === modal) closeModalDirect();
         }
-        
         function closeModalDirect() {
             modal.style.display = 'none';
             document.body.style.overflow = 'auto';
