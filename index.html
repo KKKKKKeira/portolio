@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Keira Chh 黃祺軒 | Portfolio </title>
+    <style>
+        /* --- 1. IG 風格基礎設定 --- */
+        :root {
+            --bg-color: #fafafa;
+            --card-bg: #ffffff;
+            --text-main: #262626;
+            --text-sub: #8e8e8e;
+            --link-blue: #0095f6;
+            --btn-bg: #efefef;
+            --btn-hover: #dbdbdb;
+            --border-color: #dbdbdb;
+            --max-width: 935px;
+        }
+        
+        * { box-sizing: border-box; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; padding: 0; margin: 0; }
+
+        /* 版本號 (除錯用) */
+        .version-tag {
+            position: fixed;
+            top: 0; left: 0;
+            background: red; color: white;
+            padding: 2px 5px;
+            font-size: 10px;
+            z-index: 9999;
+        }
+
+        /* --- 2. 導覽列 --- */
+        nav {
+            background: #fff;
+            border-bottom: 1px solid var(--border-color);
+            position: fixed;
+            top: 0; width: 100%;
+            z-index: 100;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .nav-content {
+            width: 100%; max-width: var(--max-width);
+            padding: 0 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .logo { 
+            font-size: 1.5rem; 
+            font-weight: bold; 
+            font-family: 'Cookie', cursive, sans-serif; 
+        }
+
+        /* --- 3. 個人檔案區 --- */
+        .profile-header {
+            max-width: var(--max-width);
+            margin: 90px auto 30px;
+            padding: 0 20px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .profile-pic-container { margin-right: 100px; flex-shrink: 0; }
+        .profile-pic {
+            width: 150px; height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1px solid var(--border-color);
+            padding: 2px;
+        }
+
+        .profile-info { flex-grow: 1; }
+        
+        .profile-name-row { display: flex; align-items: center; margin-bottom: 20px; }
+        .username { font-size: 1.8rem; font-weight: 300; margin-right: 20px; }
+        
+        .btn-msg {
+            background-color: var(--link-blue);
+            color: #fff;
+            padding: 5px 20px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            border: none;
+        }
+        .btn-msg:hover { opacity: 0.9; }
+
+        .stats-row { display: flex; margin-bottom: 20px; }
+        .stats-row li { margin-right: 40px; font-size: 1rem; }
+        .stats-row strong { font-weight: 600; }
+
+        .bio h1 { font-size: 1rem; font-weight: 600; margin: 0; }
+        .bio p { margin: 5px 0; font-size: 1rem; line-height: 1.5; white-space: pre-line; }
+        
+        .profile-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            max-width: 400px;
+        }
+        .action-btn {
+            flex: 1;
+            background-color: var(--btn-bg);
+            color: var(--text-main);
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-align: center;
+            transition: background 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .action-btn:hover { background-color: var(--btn-hover); }
+
+        /* --- 4. 標籤 --- */
+        .tabs {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin-top: 30px;
+        }
+        .tab-item {
+            padding: 20px 0;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #8e8e8e;
+            letter-spacing: 1px;
+            cursor: pointer;
+            border-top: 1px solid transparent;
+            display: flex; align-items: center; gap: 6px;
+            transition: color 0.2s;
+        }
+        .tab-item.active {
+            color: #262626;
+            border-top: 1px solid #262626;
+            margin-top: -1px;
+        }
+        .tab-item:hover { color: #555; }
+
+        /* --- 5. 九宮格 --- */
+        .gallery-container {
+            max-width: var(--max-width);
+            margin: 0 auto 50px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+            min-height: 300px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            cursor: pointer;
+            aspect-ratio: 1 / 1;
+            background: #efefef;
+            overflow: hidden;
+            animation: fadeIn 0.5s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .gallery-item img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: 0.3s;
+        }
+        
+        .video-icon {
+            position: absolute; top: 10px; right: 10px;
+            color: #fff; text-shadow: 0 0 5px rgba(0,0,0,0.5);
+            display: none;
+        }
+        
+        .gallery-overlay {
+            position: absolute; top:0; left:0; width:100%; height:100%;
+            background: rgba(0,0,0,0.3);
+            display: flex; justify-content: center; align-items: center;
+            opacity: 0; transition: 0.2s;
+            color: #fff; font-weight: bold;
+        }
+        .gallery-item:hover .gallery-overlay { opacity: 1; }
+        
+        .empty-state {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 50px;
+            color: #999;
+        }
+
+        /* --- 6. 燈箱 --- */
+        .modal {
+            display: none;
+            position: fixed; z-index: 1000;
+            left: 0; top: 0; width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.6);
+            justify-content: center; align-items: center;
+            backdrop-filter: blur(5px);
+        }
+        
+        .modal-content {
+            background-color: #fff;
+            width: 90%; max-width: 1100px;
+            height: 85vh;
+            display: flex;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .modal-media {
+            flex: 1.5;
+            background: #000;
+            display: flex; align-items: center; justify-content: center;
+            overflow: hidden;
+        }
+        .modal-media img { width: 100%; height: 100%; object-fit: contain; display: block; }
+        .modal-media video { width: 100%; height: 100%; max-height: 80vh; outline: none; }
+        .modal-media iframe { width: 100%; height: 100%; border: none; }
+
+        .modal-info {
+            flex: 1;
+            display: flex; flex-direction: column;
+            border-left: 1px solid var(--border-color);
+            background: #fff;
+        }
+        
+        .modal-header {
+            padding: 15px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .modal-user { display: flex; align-items: center; font-weight: 600; }
+        .modal-user img { width: 32px; height: 32px; border-radius: 50%; margin-right: 10px; }
+        
+        .modal-body { padding: 15px; overflow-y: auto; flex-grow: 1; }
+        .caption-text { white-space: pre-wrap; line-height: 1.6; font-size: 0.95rem; }
+        
+        .modal-footer {
+            padding: 15px;
+            border-top: 1px solid var(--border-color);
+            color: #8e8e8e; font-size: 0.8rem;
+        }
+
+        .close-btn {
+            position: absolute; top: 20px; right: 30px;
+            color: #fff; font-size: 40px; cursor: pointer;
+        }
+
+        /* --- 手機版 RWD --- */
+        @media (max-width: 768px) {
+            .nav-content { padding: 0 15px; }
+            .profile-header { flex-direction: column; margin-top: 70px; margin-bottom: 20px; padding: 0 15px; }
+            .profile-pic-container { margin-right: 0; margin-bottom: 20px; display: flex; align-items: center; }
+            .profile-pic { width: 80px; height: 80px; margin-right: 20px; }
+            .profile-name-row { flex-direction: column; align-items: flex-start; }
+            .username { margin-bottom: 5px; }
+            .btn-msg { width: 100%; text-align: center; margin-bottom: 15px; padding: 6px 0;}
+            .stats-row { width: 100%; justify-content: space-around; border-top: 1px solid var(--border-color); padding: 15px 0; margin: 0 0 15px 0; }
+            .stats-row li { margin: 0; text-align: center; display: flex; flex-direction: column; }
+            .profile-actions { width: 100%; max-width: none; }
+            .gallery-container { gap: 3px; }
+            
+            .modal-content {
+                flex-direction: column;
+                width: 100%; height: 100%;
+                max-width: none; border-radius: 0;
+            }
+            .modal-media {
+                flex: none; 
+                width: 100%;
+                height: auto;
+                min-height: 40vh;
+                max-height: 70vh;
+                background: #000;
+                overflow-y: auto;
+            }
+            .modal-media img { height: auto; width: 100%; object-fit: unset; }
+            .modal-info { flex: 1; overflow-y: auto; }
+            .close-btn { color: #000; top: 10px; right: 15px; z-index: 1001; background: rgba(255,255,255,0.8); border-radius: 50%; width: 30px; height: 30px; text-align: center; line-height: 30px; font-size: 24px;}
+        }
+    </style>
+</head>
+<body>
+    <div class="version-tag">Ver 3.0 (Clean)</div>
+
+    <nav>
+        <div class="nav-content">
+            <div class="logo">Never Too Late</div>
+        </div>
+    </nav>
+
+    <header class="profile-header">
+        <div class="profile-pic-container">
+            <img src="img/me.jpg" alt="Keira" class="profile-pic" onerror="this.src='me.jpg'">
+        </div>
+        <div class="profile-info">
+            <div class="profile-name-row">
+                <div class="username">HUANG CHI HSUAN</div>
+                <a href="mailto:chance5690@gmail.com" class="btn-msg">Message</a>
+            </div>
+            
+            <ul class="stats-row">
+                <li><strong>INTJ</strong> <span>type</span></li>
+                <li><strong>8ys</strong> <span>in AD</span></li>
+                <li><strong>TW</strong> <span>based</span></li>
+            </ul>
+
+            <div class="bio">
+                <h1>黃祺軒 Keira KK | Art Director</h1>
+                <p>
+                    🎨 Art Direction / Branding / AIGC / Campaign
+                    🍋 Morning Ritual: Lemon Water & Celery Juice
+                    身處行銷趨勢的浪尖，內心卻崇尚老子的無為。
+                    市場上多得是流於表面的設計，
+                    我卻立志在二維的平面上創造三維的體感。
+                  
+                    ⭐️Leo Burnett--2024-present/Art Director
+                    ⭐️Ogilvy--2019-2020/Art Director
+                    ⭐️Being Digital--2022-2024/Art Director
+                    ⭐️Group Tron--2018-2019/Associate Art Director
+                    ⭐️Bremen Creative--2017-2018/Visual Designer
+                    ⭐️BPets Food Startup Owner--2020-2024
+                
+                    #samsung #Mitsubishi Motor #中華電信 #Haleon #Pfifzer #RMHC #台灣高鐵 #蘇格登威士忌 #媚點 #Foodpanda #安麗 #Shiseido
+                </p>
+            </div>
+
+            <div class="profile-actions">
+                <a href="img/KeiraChiHsuan_Huang_CV.pdf" class="action-btn" download>Download CV</a>
+                <a href="https://www.linkedin.com/in/keira-huang-220a32152" class="action-btn" target="_blank">LinkedIn</a>
+            </div>
+
+        </div>
+    </header>
+
+    <div class="tabs">
+        <div class="tab-item active" onclick="switchTab('visual')" id="tab-visual">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+            <span>VISUAL</span>
+        </div>
+        <div class="tab-item" onclick="switchTab('video')" id="tab-video">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+            <span>VIDEO</span>
+        </div>
+    </div>
+
+    <div class="gallery-container" id="gallery"></div>
+
+    <div class="modal" id="modal" onclick="closeModal(event)">
+        <div class="close-btn" onclick="closeModalDirect()">&times;</div>
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="modal-media" id="modal-media"></div>
+            <div class="modal-info">
+                <div class="modal-header">
+                    <div class="modal-user">
+                        <img src="img/me.jpg" alt="user" onerror="this.src='me.jpg'">
+                        <span>keira.chh_design</span>
+                    </div>
+                    <span>•••</span>
+                </div>
+                <div class="modal-body">
+                    <div class="caption-text" id="modal-caption"></div>
+                </div>
+                <div class="modal-footer">
+                    <div style="font-size: 1.2rem; margin-bottom: 10px;">♡ &nbsp; 💬 &nbsp; ➢</div>
+                    <span style="font-size: 0.7rem; text-transform: uppercase; color: #aaa;">View all comments</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ==========================================
+        // 1. 數量設定區
+        // ==========================================
+
+        const imageCount = 49; // 圖片產生 p1 ~ p49
+        const videoCount = 21; // 影片產生 v1 ~ v21
+
+        // ==========================================
+        // 2. 文字客製化區
+        // ==========================================
+        
+        // 圖片專用 (p 開頭)
+        const customImages = {
+            1: { caption: '【Campaign Key Visual】' },
+            2: { caption: '【Social Media Content】' },
+            3: { caption: '【Campaign Key Visual】' },
+            4: { caption: '【Social Media Content】\n社群行銷素材。\n\n#SocialMedia' },
+            5: { caption: '【Social Media Content】\n社群行銷素材。\n\n#SocialMedia' },
+            6: { caption: '【Social Media Content】\n社群行銷素材。\n\n#SocialMedia' },
+            7: { caption: '【Campaign Key Visual】' },
+            8: { caption: '【Campaign Video】\n米其林輪胎\n\n#SocialMedia' },
+            9: { caption: '【Social Campaign】\n\n\n#Social' },
+            10: { caption: '【Social Media Content】\n社群行銷素材。\n\n#SocialMedia' },
+            11: { caption: '【Social Media Content】\n社群行銷素材。\n\n#SocialMedia' },
+            12: { caption: '【Social Media Content】\n社群行銷素材。\n\n#SocialMedia' },
+            13: { caption: '【Crowdfunding Project】\n把在工作上所學到的前端資料搜集、使用者分析、策略擬定、介面設計、KOL運用、募資頁面製作\n一手包辦！\n\n#SocialMedia' },
+            14: { caption: '【Notebook Design】' },
+            15: { caption: '【OOH Design】\n#blackpinkconcert' },
+            16: { caption: '【Social Media Content】\n社群行銷素材。\n\n#SocialMedia' },
+            17: { caption: '【Social Media Content】\n社群行銷素材。\n\n#SocialMedia' },
+            18: { caption: '【Social Media Content】\n社群行銷素材。\n\n#SocialMedia' },
+            19: { caption: '【Campaign Key Visual】' },
+            20: { caption: '【Campaign Key Visual】' },
+            21: { caption: '【Campaign Key Visual】' },
+            22: { caption: '【Campaign Key Visual】' },
+            23: { caption: '【Campaign Key Visual】' },
+            24: { caption: '【Campaign Key Visual】' },
+            25: { caption: '【Social Media Content】\n社群行銷素材。\n\n#SocialMedia' },
+            26: { caption: '【Social Media Content】\n社群行銷素材。\n\n#SocialMedia' },
+            27: { caption: '【Social Media Content】\n社群行銷素材。\n\n#SocialMedia' },
+            28: { caption: '【Social Media Content】\n社群行銷素材。\n\n#SocialMedia' },
+            29: { caption: '【Social Media Content】\n社群行銷素材。\n\n#SocialMedia' },
+            30: { caption: '【Social Media Content】\n社群行銷素材。\n\n#SocialMedia' },
+            31: { caption: '【Social Media Content】\n社群行銷素材。\n\n#SocialMedia' },
+            32: { caption: '【Social Media Content】\n社群行銷素材。\n\n#SocialMedia' },
+            33: { caption: '【Social Media Content】\n社群行銷素材。\n\n#SocialMedia' },
+            34: { caption: '【Product Photography】' },
+            35: { caption: '【Product Photography】' },
+            36: { caption: '【Product Photography】' },
+            37: { caption: '【Product Photography】' },
+            38: { caption: '【Product Photography】' },
+            39: { caption: '【Product Photography】' },
+            40: { caption: '【Product Photography】' },
+            41: { caption: '【Product Photography】' },
+            42: { caption: '【Product Photography】' },
+            43: { caption: '【Product Photography】' },
+            44: { caption: '【Product Photography】' },
+            45: { caption: '【Video Style Design】' },
+            46: { caption: '【Video Style Design】' },
+            47: { caption: '【LINE MGM Deisign】' },
+            48: { caption: '【Campaign Eventsite Design】' },
+            49: { caption: '【Paint by me】' }
+
+        };
+
+        // 影片專用 (v 開頭)
+        const customVideos = {
+            1: { caption: '【Campaign Commercial】' },
+            2: { caption: '【Campaign Commercial】' },
+            3: { caption: '【Campaign Commercial】' },
+            4: { caption: '【Campaign Commercial】' },
+            5: { caption: '【Campaign Commercial】' },
+            6: { caption: '【TV Commercial】' },          
+            7: { caption: '【Campaign Commercial】' },
+            8: { caption: '【Social Media Content】' },          
+            9: { caption: '【Social Media Content】' },
+            10: { caption: '【Social Media Content】' },
+            11: { caption: '【Campaign Commercial】' },
+            12: { caption: '【AIGC】' },
+            13: { caption: '【AIGC】' },
+            14: { caption: '【AIGC by me】' },          
+            15: { caption: '【AIGC by me】' },
+            16: { caption: '【AIGC by me】' },  
+            17: { caption: '【AIGC by me】' },
+            18: { caption: '【Motion Graphic Content】' },
+            19: { caption: '【Motion Graphic Content】' },          
+            20: { caption: '【Social Campaign Content】' },
+            21: { caption: '【Social Campaign Content】' }           
+        };
+
+        // ==========================================
+        // 3. 自動生成區 (嚴格分流)
+        // ==========================================
+        
+        const allPosts = [];
+
+        // 軌道 A：只處理圖片 (p系列)
+        for (let i = 1; i <= imageCount; i++) {
+            const custom = customImages[i] || {}; 
+            allPosts.push({
+                id: `img-${i}`,
+                type: 'image',
+                src: `img/p${i}.jpg`,
+                thumb: `img/p${i}.jpg`,
+                caption: custom.caption || `Visual Work No.${i}\n#GraphicDesign`
+            });
+        }
+
+        // 軌道 B：只處理影片 (v系列)
+        for (let i = 1; i <= videoCount; i++) {
+            const custom = customVideos[i] || {};
+            allPosts.push({
+                id: `video-${i}`,
+                type: 'video',
+                src: `img/v${i}.mp4`,  
+                thumb: `img/v${i}.jpg`, // 影片封面
+                caption: custom.caption || `Video Work No.${i}\n#MotionGraphics`
+            });
+        }
+
+        // ==========================================
+        // 4. 核心功能區
+        // ==========================================
+        
+        const gallery = document.getElementById('gallery');
+        const modal = document.getElementById('modal');
+        const modalMedia = document.getElementById('modal-media');
+        const modalCaption = document.getElementById('modal-caption');
+        
+        let currentDisplayPosts = [];
+
+        switchTab('visual');
+
+        function switchTab(tabName) {
+            document.getElementById('tab-visual').classList.remove('active');
+            document.getElementById('tab-video').classList.remove('active');
+            document.getElementById(`tab-${tabName}`).classList.add('active');
+
+            // 嚴格篩選
+            if (tabName === 'visual') {
+                currentDisplayPosts = allPosts.filter(post => post.type === 'image');
+            } else {
+                currentDisplayPosts = allPosts.filter(post => post.type === 'video');
+            }
+
+            renderGallery(currentDisplayPosts);
+        }
+
+        function renderGallery(posts) {
+            gallery.innerHTML = '';
+            
+            if (posts.length === 0) {
+                gallery.innerHTML = '<div class="empty-state">尚無內容</div>';
+                return;
+            }
+
+            posts.forEach((post, index) => {
+                const item = document.createElement('div');
+                item.className = 'gallery-item';
+                
+                // 顯示縮圖 (onerror: 找不到封面圖就用大頭照)
+                let htmlContent = `<img src="${post.thumb}" loading="lazy" alt="post" onerror="this.src='img/me.jpg'">`;
+                
+                if(post.type === 'video') {
+                    htmlContent += `<div class="video-icon" style="display:block; position:absolute; top:10px; right:10px;"><svg width="24" height="24" viewBox="0 0 24 24" fill="#ffffff"><path d="M8 5v14l11-7z"/></svg></div>`;
+                }
+                
+                htmlContent += `<div class="gallery-overlay">♥ ${(Math.random() * 900 + 100).toFixed(0)}</div>`;
+                
+                item.innerHTML = htmlContent;
+                item.onclick = () => openModal(index);
+                gallery.appendChild(item);
+            });
+        }
+
+        function openModal(index) {
+            const post = currentDisplayPosts[index];
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+
+            // 這裡已強制使用 <video> 標籤
+            if (post.type === 'video') {
+                modalMedia.innerHTML = `
+                    <video controls autoplay playsinline style="width:100%; height:100%; max-height:80vh; outline:none;">
+                        <source src="${post.src}" type="video/mp4">
+                        您的瀏覽器不支援影片播放。
+                    </video>`;
+            } else {
+                modalMedia.innerHTML = `<img src="${post.src}" alt="Detail">`;
+            }
+            modalCaption.innerHTML = post.caption.replace(/\n/g, '<br>');
+        }
+
+        function closeModal(event) {
+            if (event.target === modal) closeModalDirect();
+        }
+        
+        function closeModalDirect() {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+            modalMedia.innerHTML = '';
+        }
+    </script>
+</body>
+</html>
